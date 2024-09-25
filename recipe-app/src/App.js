@@ -14,6 +14,11 @@ export const App = () => {
 	}, []);
 
 	return (
-		[RecipeList]
+		<div className="container">
+			<header>Recipe Search App</header>
+			< RecipeList />
+
+		</div>
+
 	);
 };

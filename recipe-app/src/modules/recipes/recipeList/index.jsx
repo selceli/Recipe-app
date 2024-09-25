@@ -5,9 +5,6 @@ export const RecipeList = () => {
   const [recipes, setRecipes] = useState([]);
 
   return [
-    <div className="container">
-      <header>Recipe Search App</header>
-      <SearchBar />
       {recipes.length > 0 ? (
         <ul>
           {recipes.map((recipe) => (
@@ -17,6 +14,5 @@ export const RecipeList = () => {
       ) : (
         <></>
       )}
-    </div>,
   ];
 };
