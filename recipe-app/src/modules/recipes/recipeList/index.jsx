@@ -1,10 +1,11 @@
-import { SearchBar } from "../search-bar";
+
 import { useState } from "react";
 
 export const RecipeList = () => {
   const [recipes, setRecipes] = useState([]);
 
-  return [
+  return
+   <>[
       {recipes.length > 0 ? (
         <ul>
           {recipes.map((recipe) => (
@@ -12,7 +13,6 @@ export const RecipeList = () => {
           ))}
         </ul>
       ) : (
-        <></>
-      )}
-  ];
+       
+      )}] </>;
 };
