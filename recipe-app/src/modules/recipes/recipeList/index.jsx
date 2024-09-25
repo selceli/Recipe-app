@@ -2,13 +2,16 @@ import { useState, useEffect } from "react";
 import { fetchRecipesByIngredient } from "../recipeService";
 import "./styles.css";
 
-export const RecipeList = () => {
+export const RecipeList = ({ onRecipeClick }) => {
   const [recipes, setRecipes] = useState([]);
   useEffect(() => {
     fetchRecipesByIngredient("chicken_breast").then((recipes) =>
       setRecipes(recipes.length > 0 ? recipes : []),
     );
   }, []);
+  onRecipeClick = () => {
+    return "";
+  };
   return (
     <>
       {recipes.length > 0 ? (
@@ -16,9 +19,8 @@ export const RecipeList = () => {
           {recipes.map((recipe) => (
             <li
               key={recipes.idMeal}
-              link
-              to="www.themealdb.com/api/json/v1/1/lookup.php?i=52772"
               className="recipe-item"
+              onClick={() => onRecipeClick(recipes.idMeal)}
             >
               {recipe.strMeal}
             </li>
