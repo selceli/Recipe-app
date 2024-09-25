@@ -2,6 +2,7 @@ import { SearchBar } from './modules/recipes/search-bar';
 import { fetchRecipesByIngredient } from './modules/recipes/recipeService';
 import './App.css';
 import { useState, useEffect } from 'react';
+import { RecipeList } from './modules/recipes/recipeList';
 
 export const App = () => {
 	const [recipes, setRecipes] = useState([]);
@@ -13,18 +14,6 @@ export const App = () => {
 	}, []);
 
 	return (
-		<div className='container'>
-			<header>Recipe Search App</header>
-			<SearchBar />
-			{recipes.length > 0 ? (
-				<ul>
-					{recipes.map((recipe) => (
-						<li key={recipe.idMeal}>{recipe.strMeal}</li>
-					))}
-				</ul>
-			) : (
-				<></>
-			)}
-		</div>
+		[RecipeList]
 	);
 };
