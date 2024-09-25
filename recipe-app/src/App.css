@@ -1,0 +1,12 @@
+.container{
+ max-width: 80%;
+ font-size: 20px;
+ padding: 50px;
+ display: flex;
+
+}
+
+li{
+  border: 1px grey solid;
+  gap: 10px;
+}
