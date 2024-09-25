@@ -1,0 +1,11 @@
+.recipe-list{
+  list-style-type: none;
+  padding: 0;
+}
+.recipe-item{
+  background-color: white;
+  padding:15px;
+  margin-bottom: 10px;
+  border: 1px solid grey;
+  border-radius: 5px;
+}

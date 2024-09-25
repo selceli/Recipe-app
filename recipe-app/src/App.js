@@ -1,23 +1,29 @@
-import { SearchBar } from './modules/recipes/search-bar';
-import { fetchRecipesByIngredient } from './modules/recipes/recipeService';
+
 import './App.css';
 import { useState, useEffect } from 'react';
 import { RecipeList } from './modules/recipes/recipeList';
+import { AppRouter } from './AppRouter';
+
+
 
 export const App = () => {
 	const [recipes, setRecipes] = useState([]);
 
+
 	useEffect(() => {
-		fetchRecipesByIngredient('chicken_breast').then((recipes) =>
-			setRecipes(recipes.length > 0 ? recipes : []),
-		);
+		const fetchRecipes = async () => {
+
+			const recipeId = await AppRouter();
+			setRecipes([recipeId]);
+
+		};
+		fetchRecipes();
 	}, []);
 
 	return (
 		<div className="container">
 			<header>Recipe Search App</header>
-			< RecipeList />
-
+			< RecipeList recipes={recipes} />
 		</div>
 
 	);
