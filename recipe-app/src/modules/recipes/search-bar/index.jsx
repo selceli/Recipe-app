@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { searchRecipesByname } from "../recipeService";
+import { fetchRecipesByIngredient } from "../recipeService";
 
 export const SearchBar = () => {
   const [query, setQuery] = useState("");
@@ -10,7 +10,7 @@ export const SearchBar = () => {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const recipes = await searchRecipesByname(query);
+    const recipes = await fetchRecipesByIngredient(query);
   }
   return (
     <form onSubmit={handleSubmit}>
