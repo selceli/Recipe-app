@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { fetchRecipesByIngredient } from "../recipeService";
+import "./styles.css";
 
 export const SearchBar = () => {
   const [query, setQuery] = useState("");
@@ -7,16 +7,15 @@ export const SearchBar = () => {
   function handleChange(e) {
     setQuery(e.target.value.trim());
   }
-
-  async function handleSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault();
-    const recipes = await fetchRecipesByIngredient(query);
   }
+
   return (
     <form onSubmit={handleSubmit}>
       <input
         onChange={handleChange}
-        aria-label="Recipe search"
+        aria-label="recipe search"
         placeholder="Search for recipes..."
       />
     </form>
