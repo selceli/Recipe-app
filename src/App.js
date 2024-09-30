@@ -1,16 +1,14 @@
-import { SearchBar } from './modüles/recipes/search-bar';
-import { fetchRecipesByIngredient } from './modüles/recipes/recipeService';
+import { SearchBar } from './modules/recipes/search-bar';
+import { fetchRecipesByIngredient } from './modules/recipes/recipeService';
 import { useEffect, useState } from 'react';
-import { RecipeList } from './modüles/recipes/recipe-list';
+import { RecipeList } from './modules/recipes/recipe-list';
 import './App.css';
 
 const App = () => {
-
-  const [recipes, setRecipes] = useState([]);
   const [selectedRecipe, setSelectedRecipe] = useState();
 
   const handleRecipeClick = async (recipeId) => {
-    const recipeDetails = recipes.find((recipe) => recipe.idMeal === recipeId);
+    // TODO: add API call to fetch recipe data by recipe Id
     setSelectedRecipe(recipeDetails);
   };
 
@@ -25,7 +23,7 @@ const App = () => {
           <img src={selectedRecipe.strMeal} alt={selectedRecipe.strMeal} />
           <p>{selectedRecipe.strInstruction}</p>
         </div>
-      )};
+      )}
     </div>
   );
 };
