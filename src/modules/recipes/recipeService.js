@@ -9,5 +9,5 @@ export async function fetchRecipesByIngredient(query) {
   const data = await response.json();
   return data.meals;
 };
+};
 
-// TODO: add another function to fetch a recipe by id
