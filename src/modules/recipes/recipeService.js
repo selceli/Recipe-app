@@ -23,6 +23,11 @@ export async function fetchRecipesById(query) {
     throw Error;
   }
   const data = await response.json();
+
   return data.meals;
+};
+
+=======
+  return data.meals[0];
 };
 
