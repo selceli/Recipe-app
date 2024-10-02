@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { fetchRecipesByIngredient } from "../recipeService";
 import { RECIPE_ACTIONS, useRecipes } from "../RecipesProvider";
 import { useRecipesDispatch } from "../RecipesProvider";
@@ -16,13 +16,13 @@ export const RecipeList = ({ onRecipeClick }) => {
 
   return (
     <>
-      {recipes.length > 0 ? (
+      {recipes?.length > 0 ? (
         <ul className="recipe-list">
           {recipes.map((recipe) => (
             <li
-              key={recipes.idMeal}
+              key={recipe.idMeal}
               className="recipe-item"
-              onClick={() => onRecipeClick(recipes.idMeal)}
+              onClick={() => onRecipeClick(recipe.idMeal)}
             >
               {recipe.strMeal}
             </li>

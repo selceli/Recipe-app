@@ -9,7 +9,7 @@ export async function fetchRecipesByIngredient(query) {
 
 export async function searchRecipesById(query) {
   const data = await fetchData(`${BD_BASE_URL}/lookup.php?s=`, query);
-  return data.meals;
+  return data.meals[0];
 };
 
 
