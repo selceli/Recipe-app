@@ -1,16 +1,14 @@
 import { SearchBar } from './modules/recipes/search-bar';
-import { fetchRecipesByIngredient } from './modules/recipes/recipeService';
-import { useEffect, useState } from 'react';
+import { fetchRecipesById } from './modules/recipes/recipeService';
+import { useState } from 'react';
 import { RecipeList } from './modules/recipes/recipe-list';
 import './App.css';
 
 const App = () => {
-
-  const [recipes, setRecipes] = useState([]); //bunu kaldırdığımda hata alıyorum.recipes undefined oluyor.  
   const [selectedRecipe, setSelectedRecipe] = useState();
 
   const handleRecipeClick = async (recipeId) => {
-    const recipeDetails = await fetchRecipesByIngredient(recipeId);
+    const recipeDetails = await fetchRecipesById(recipeId);
     setSelectedRecipe(recipeDetails);
   };
 
@@ -18,7 +16,7 @@ const App = () => {
     <div className="container">
       <header>Recipe Search App</header>
       <SearchBar />
-      <RecipeList recipes={recipes} onRecipeClick={handleRecipeClick} />
+      <RecipeList onRecipeClick={handleRecipeClick} />
       {selectedRecipe && (
         <div>
           <h2>{selectedRecipe.strMeal}</h2>
