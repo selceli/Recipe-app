@@ -1,23 +1,20 @@
+import { fetchData } from '../shared-components/utils';
+
+export const BD_BASE_URL = 'https://www.themealdb.com/api/json/v1/1/';
+
 export async function fetchRecipesByIngredient(query) {
-  const response = await fetch(
-    `https://www.themealdb.com/api/json/v1/1/filter.php?i=${query}`
-  );
-
-  if (!response.ok) {
-    throw Error;
-  }
-  const data = await response.json();
+  const data = await fetchData(`${BD_BASE_URL}/filter.php?i=`, query);
   return data.meals;
 };
 
-export async function fetchRecipesById(query) {
-  const response = await fetch(
-    `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${query}`
-  );
-
-  if (!response.ok) {
-    throw Error;
-  }
-  const data = await response.json();
+export async function searchRecipesById(query) {
+  const data = await fetchData(`${BD_BASE_URL}/lookup.php?s=`, query);
   return data.meals;
 };
+
+
+export async function searchRecipesByName(query) {
+  const data = await fetchData(`${BD_BASE_URL}/search.php?s=`, query);
+  return data.meals;
+};
+

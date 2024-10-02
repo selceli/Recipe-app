@@ -1,22 +1,17 @@
 import { useState, useEffect } from "react";
 import { fetchRecipesByIngredient } from "../recipeService";
+import { RECIPE_ACTIONS, useRecipes } from "../RecipesProvider";
+import { useRecipesDispatch } from "../RecipesProvider";
 import "./styles.css";
 
 export const RecipeList = ({ onRecipeClick }) => {
-  const [recipes, setRecipes] = useState([]);
+  const recipes = useRecipes();
+  const dispatch = useRecipesDispatch();
 
   useEffect(() => {
     fetchRecipesByIngredient("chicken_breast").then((recipes) =>
-      setRecipes(recipes.length > 0 ? recipes : []),
+      dispatch({ type: RECIPE_ACTIONS.update, payload: recipes })
     );
-  }, []);
-
-  useEffect(() => {
-    const fetchRecipes = async () => {
-      const recipes = await fetchRecipesByIngredient("chicken");
-      setRecipes([recipes]);
-    };
-    fetchRecipes();
   }, []);
 
   return (
