@@ -1,22 +1,24 @@
-import { SearchBar } from './modules/recipes/search-bar';
-import { searchRecipesById } from './modules/recipes/recipeService';
-import { useState } from 'react';
-import { RecipeList } from './modules/recipes/recipe-list';
-import { useRecipesDispatch, useRecipes } from './modules/recipes/RecipesProvider';
+
 import { AppRouter } from './AppRouter';
+import { Navbar } from "./modules/shared-components/Navbar"
+import { UserProvider } from './UserContext';
 
 
 import './App.css';
 
-const App = () => {
+export default function App() {
 
   return (
-    <div className="container">
-      <header>Recipe Search App</header>
-      <AppRouter />
-    </div>
+    <>
+      <UserProvider>
+        <Navbar />
+        <div className="container">
+          <AppRouter />
+        </div>
+      </UserProvider>
+    </>
   );
 };
 
-export default App;
+
 

@@ -1,22 +1,44 @@
-.container{
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.search-form {
   display: flex;
-  flex-direction: column;
   justify-content: center;
- max-width: 800px;
- font-size: 20px;
- padding: 30px;
- margin: 50px;
- display: flex;
-
+  margin: 10px auto;
 }
-header{
+
+.search-input {
+  padding: 10px;
+  font-size: 1em;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.search-input:focus {
+  border-color: #6c757d;
+  outline: none;
+  box-shadow: 0 0 5px rgba(108, 117, 125, 0.5);
+}
+
+.recipe-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.recipe-item {
+  background-color: white;
+  padding: 15px;
+  margin-bottom: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.no-recipes {
   text-align: center;
-  font-size: 50px;
-  margin-bottom: 20px;
-  color: black;
-}
-
-li{
-  border: 1px grey solid;
-  gap: 10px;
+  color: #6c757d;
 }
