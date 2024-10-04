@@ -33,7 +33,7 @@ export const Categories = () => {
         <ul className="recipe-list">
           {categories.map((category) => (
             <li key={category.idCategory} className="recipe-item">
-              <Link to={`/category/${category.strCategory}`}>
+              <Link to={`${category.strCategory}`}>
                 {category.strCategory}
               </Link>
             </li>
