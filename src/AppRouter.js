@@ -64,8 +64,10 @@ export const AppRouter = () => {
                 />
                 <Route path=':recipeId' element={<RecipeDetails />} />
                 <Route path='create' element={<CreateNewRecipe />} />
-                <Route path='categories' element={<Categories />} />
-                <Route path='category/:category' element={<CategoryMeals />} />
+                <Route path='categories'>
+                    <Route path=':category' element={<CategoryMeals />}/>
+                    <Route index element={<Categories />}/>
+                </Route>
             </Route>
             <Route path='/account' element={<h1>Account Page</h1>} />
             <Route path="*" element={<h1>Logged out succesfully.</h1>} />
