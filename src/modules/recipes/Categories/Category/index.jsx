@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { fetchCategories } from "../recipeService";
+import { fetchCategories } from "../../recipeService";
 
 export const Categories = () => {
   const [categories, setCategories] = useState([]);

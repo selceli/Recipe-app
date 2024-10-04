@@ -5,7 +5,7 @@ import { FeaturedRecipes } from './modules/recipes/FeaturedRecipes';
 import { RecipeDetails } from './modules/recipes/RecipeDetails';
 import { ProtectedRoute } from './ProtectedRoute';
 import { CreateNewRecipe } from './modules/recipes/CreateNewRecipe';
-import { Categories } from './modules/recipes/Categories';
+import { Categories } from './modules/recipes/Categories/Category';
 import { Login } from './modules/users/Login';
 import { CategoryMeals } from './modules/recipes/Categories/CategoryMeals';
 
@@ -29,6 +29,10 @@ Lesson 38 TODOs:
 export const AppRouter = () => {
     return (
         <Routes>
+            <Route
+                path='/'
+                element={<FeaturedRecipes />}
+            />
             <Route path='/login' element={<Login />} />
             <Route
                 path='/user'
@@ -61,15 +65,9 @@ export const AppRouter = () => {
                 <Route path=':recipeId' element={<RecipeDetails />} />
                 <Route path='create' element={<CreateNewRecipe />} />
                 <Route path='categories' element={<Categories />} />
-                <Route path='category' element={<CategoryMeals />} />
+                <Route path='category/:category' element={<CategoryMeals />} />
             </Route>
             <Route path='/account' element={<h1>Account Page</h1>} />
-
-
-            <Route
-                path='/'
-                element={<FeaturedRecipes />}
-            />
             <Route path="*" element={<h1>Logged out succesfully.</h1>} />
         </Routes>
     );
