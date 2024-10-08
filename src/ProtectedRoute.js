@@ -4,6 +4,6 @@ import { useContext } from 'react';
 
 export const ProtectedRoute = ({ children }) => {
     // TODO: replace with actual value from User context when it is available
-    const user = useContext(UserContext);
-    return user ? children : <Navigate to='/login' replace={true} />;
+    const userLoggedIn = useContext(UserContext);
+    return userLoggedIn ? children : <Navigate to='/login' replace={true} />;
 };

@@ -8,6 +8,7 @@ import { CreateNewRecipe } from './modules/recipes/CreateNewRecipe';
 import { Categories } from './modules/recipes/Categories/Category';
 import { Login } from './modules/users/Login';
 import { CategoryMeals } from './modules/recipes/Categories/CategoryMeals';
+import { Register } from './modules/users/Register';
 
 /*
 Lesson 38 TODOs:
@@ -70,6 +71,7 @@ export const AppRouter = () => {
                 </Route>
             </Route>
             <Route path='/account' element={<h1>Account Page</h1>} />
+            <Route path='/register' element={<Register />} />
             <Route path="*" element={<h1>Logged out succesfully.</h1>} />
         </Routes>
     );
