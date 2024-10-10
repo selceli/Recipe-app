@@ -1,18 +1,18 @@
-
+.form {
+  border: 1px solid grey;
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 70%;
+  margin-top: 100px;
+}
 .register-form {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
+  justify-content: center;
+  align-content: center;
   gap: 1rem;
 }
-
-input {
-  width: 80%;
-  height: 2rem;
-}
+input,
 button {
-  width: 80%;
-  height: 2rem;
+  width: 100%;
 }
-

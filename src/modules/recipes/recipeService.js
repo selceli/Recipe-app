@@ -23,7 +23,13 @@ export async function fetchCategories() {
 }
 
 export async function fetchRecipesByCategory(query) {
+  if (!query) {
+    throw new Error('Kategori belirtilmedi');
+  }
   const data = await fetchData(`${BD_BASE_URL}/filter.php?c=`, query);
+  if (!data.meals) {
+    throw new Error(`"${query}" kategorisinde yemek bulunamadi`);
+  }
   return data.meals;
 }
 

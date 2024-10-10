@@ -1,12 +1,13 @@
 import { useContext, useState } from "react";
 import "./styles.css";
-import { UserDispatchContext } from "../../../UserContext";
+import { UserContext, UserDispatchContext } from "../../../UserContext";
 import { UserActionTypes } from "../../../UserContext";
+import { Navigate } from "react-router-dom";
+import { Login } from "../Login";
 
 export const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [userName, setUserName] = useState("");
   const dispatch = useContext(UserDispatchContext);
 
   const handleSubmit = (event) => {
@@ -31,14 +32,6 @@ export const Register = () => {
           onChange={(e) => setEmail(e.target.value)}
         />
 
-        <label htmlFor="username">Username</label>
-        <input
-          type="text"
-          id="username"
-          value={userName}
-          onChange={(e) => setUserName(e.target.value)}
-        />
-
         <label htmlFor="password">Password</label>
         <input
           type="password"
@@ -46,7 +39,15 @@ export const Register = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit" className="btn--success">
+        <button
+          onClick={() => {
+            if (Login) {
+              Navigate("/");
+            }
+          }}
+          type="submit"
+          className="btn--success buton"
+        >
           Register
         </button>
       </form>
