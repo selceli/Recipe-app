@@ -25,24 +25,20 @@ export const Navbar = ({ isLoggedIn, onLogout }) => {
         <li>
           <Link to="/recipes/categories">Categories</Link>
         </li>
-        {isLoggedIn ? (
-          <>
-            <li>
-              <Link to="/account">Account</Link>
-            </li>
-            <li>
-              <Link to="/settings">Settings</Link>
-            </li>
 
-            <li>
-              <button onClick={onLogout}>Log out</button>
-            </li>
-          </>
-        ) : (
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-        )}
+        <li>
+          <Link to="/account">Account</Link>
+        </li>
+        <li>
+          <Link to="/settings">Settings</Link>
+        </li>
+        <li>
+          <Link to="/login">Login</Link>
+        </li>
+
+        <li>
+          <button className="buton-bt">Logout</button>
+        </li>
       </ul>
     </nav>
   );

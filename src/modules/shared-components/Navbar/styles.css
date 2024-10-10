@@ -6,7 +6,15 @@
 }
 
 .navbar__list {
-    display: flex;
-    justify-content: flex-end;
-    gap: 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+}
+.buton-bt {
+  border: none;
+  background-color: inherit;
+  font-size: 1em;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
 }

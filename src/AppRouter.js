@@ -50,13 +50,20 @@ export const AppRouter = (isLoggedIn, onLogin) => {
                     }
                 />
                 <Route path=':recipeId' element={<RecipeDetails />} />
-                <Route path='create' element={<CreateNewRecipe />} />
+                <Route path='create' element={
+                    <ProtectedRoute>
+                        <CreateNewRecipe />
+                    </ProtectedRoute>} />
                 <Route path='categories' element={<Categories />} />
                 <Route path="recipe/:id" element={<RecipeDetails1 />} />
                 <Route path='categories/:categoryId' element={<CategoryMeals />} />
             </Route>
 
-            <Route path='/account' element={<h1>Account Page</h1>} />
+            <Route path='/account' element={
+                <ProtectedRoute>
+                    <h1>Account Page</h1>
+                </ProtectedRoute>}
+            />
             <Route path='/register' element={<Register />} />
             <Route path="*" element={<h1>404 - Sayfa Bulunamadi</h1>} />
         </Routes>
