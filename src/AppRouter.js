@@ -66,6 +66,7 @@ export const AppRouter = (isLoggedIn, onLogin) => {
                 </ProtectedRoute>}
             />
             <Route path='/register' element={<Register />} />
+
             <Route path="*" element={<h1>404 - Sayfa Bulunamadi</h1>} />
         </Routes>
     );

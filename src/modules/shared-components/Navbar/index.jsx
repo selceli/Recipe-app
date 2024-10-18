@@ -48,7 +48,7 @@ export const Navbar = ({ isLoggedIn, onLogout }) => {
         )}
         {user.isLoggedIn && (
           <li>
-            <Link to="/login">Logout</Link>
+            <Link to="/">Logout</Link>
           </li>
         )}
       </ul>

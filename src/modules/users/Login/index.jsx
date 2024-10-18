@@ -6,7 +6,6 @@ import {
   useUserDispatch,
 } from "../../../UserContext";
 import { Navigate, useNavigate } from "react-router-dom";
-import { type } from "@testing-library/user-event/dist/type";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
