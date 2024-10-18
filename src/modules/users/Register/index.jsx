@@ -6,6 +6,7 @@ import { Navigate } from "react-router-dom";
 import { Login } from "../Login";
 
 export const Register = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useContext(UserDispatchContext);
@@ -22,6 +23,14 @@ export const Register = () => {
   return (
     <form onSubmit={handleSubmit} className="form">
       <h1>Register</h1>
+
+      <label htmlFor="name">Name</label>
+      <input
+        type="name"
+        id="name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
 
       <form className="register-form">
         <label htmlFor="email">Email</label>
