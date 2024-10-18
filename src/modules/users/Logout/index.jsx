@@ -8,12 +8,11 @@ export const logout = () => {
 
   const handleLogin = (email, password) => {
     if (email === "email" && password === "password") {
-      console.log("Giriş başarılı");
       setIsLoggedIn(true);
       localStorage.setItem("isLoggedIn", "true");
       return true;
     }
-    console.log("Giriş başarısız");
+
     return false;
   };
   const handleLogout = () => {

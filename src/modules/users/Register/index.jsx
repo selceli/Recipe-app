@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import "./styles.css";
-import { UserContext, UserDispatchContext } from "../../../UserContext";
+import { UserDispatchContext } from "../../../UserContext";
 import { UserActionTypes } from "../../../UserContext";
 import { Navigate } from "react-router-dom";
 import { Login } from "../Login";

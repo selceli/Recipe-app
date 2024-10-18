@@ -1,28 +1,26 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import "./styles.css";
-import { UserDispatchContext } from "../../../UserContext";
-import { UserActionTypes } from "../../../UserContext";
-import { useNavigate } from "react-router-dom";
+import {
+  loginUser,
+  UserActionTypes,
+  useUserDispatch,
+} from "../../../UserContext";
+import { Navigate, useNavigate } from "react-router-dom";
 
-export const Login = (onLogin) => {
+export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const dispatch = useContext(UserDispatchContext);
+  const dispatch = useUserDispatch();
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form gönderildi:", { email, password });
-
-    if (typeof onLogin === "function") {
-      const loginSuccessful = onLogin(email, password);
-      console.log("Giriş :", loginSuccessful);
-      navigate("/");
+    if (loginUser(email, password)) {
+      console.log("Giriş başarılı");
     } else {
-      Error("Geçersiz kullanici adi veya şifre");
+      console.log("Giriş başarısız");
     }
-
     dispatch({
       type: UserActionTypes.Login,
       payload: { email: email, password: password },
@@ -48,7 +46,15 @@ export const Login = (onLogin) => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit" className="btn--success">
+        <button
+          type="submit"
+          className="btn--success"
+          onClick={() => {
+            if (Login) {
+              Navigate("/");
+            }
+          }}
+        >
           Login
         </button>
         <div className="register">
@@ -56,7 +62,7 @@ export const Login = (onLogin) => {
         </div>
         <button
           onClick={() => navigate("/register")}
-          type="submit"
+          type="button"
           className="btn--success buton"
         >
           Register

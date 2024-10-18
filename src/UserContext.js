@@ -1,9 +1,12 @@
-import { createContext, useReducer } from 'react';
+import { createContext, useContext, useReducer } from 'react';
+import { Navigate } from 'react-router-dom';
 
 
 export const UserContext = createContext();
-export const UserDispatchContext = createContext()
-    ;
+export const UserDispatchContext = createContext();
+
+export const useUser = () => useContext(UserContext);
+export const useUserDispatch = () => useContext(UserDispatchContext)
 
 export const UserProvider = ({ children, initialState }) => {
     const [user, dispatch] = useReducer(userReducer, initialState ?? {});
@@ -18,8 +21,8 @@ export const UserProvider = ({ children, initialState }) => {
 
 export const UserActionTypes = {
     Login: "login",
-    logout: "logout",
-    update: "update",
+    Logout: "logout",
+    Update: "update",
 };
 
 function userReducer(state, action) {
@@ -30,12 +33,24 @@ function userReducer(state, action) {
                 action.payload.password === "12345"
             ) {
                 return { isLoggedInUser: true, email: action.payload.email };
+                Navigate("/")
             } else return { isLoggedInUser: false };
-        case UserActionTypes.logout:
+        case UserActionTypes.Logout:
             return { isLoggedInUser: false };
-        case UserActionTypes.update:
+        case UserActionTypes.Update:
             return { ...state, ...action.payload };
         default:
             throw Error;
     }
 }
+export const loginUser = (dispatch, email, password) => {
+    if (email === "johndoe@gmail.com" && password === "12345") {
+        dispatch({ type: UserActionTypes.Login, payload: { email } });
+        return true;
+    }
+    return false;
+};
+
+export const logoutUser = (dispatch) => {
+    dispatch({ type: UserActionTypes.Logout });
+};

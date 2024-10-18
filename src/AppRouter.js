@@ -10,9 +10,12 @@ import { Login } from './modules/users/Login';
 import { CategoryMeals } from './modules/recipes/Categories/CategoryMeals';
 import { Register } from './modules/users/Register';
 import { RecipeDetails1 } from './modules/recipes/RecipeDetails1';
+import { useContext } from 'react';
+import { UserContext } from './UserContext';
 
 
 export const AppRouter = (isLoggedIn, onLogin) => {
+    const userLoggedIn = useContext(UserContext);
     return (
         <Routes>
             <Route
@@ -35,10 +38,8 @@ export const AppRouter = (isLoggedIn, onLogin) => {
                     <ProtectedRoute>
                         <h1>Settings page</h1>
                     </ProtectedRoute>
-
                 }
             />
-
             <Route path='/recipes'>
                 <Route
                     path='search'
