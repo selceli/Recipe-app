@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import { AppRouter } from "./AppRouter";
 import { Navbar } from "./components/Navbar";
+import "./styles.css";
 
 export const logout = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

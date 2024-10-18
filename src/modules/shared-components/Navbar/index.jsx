@@ -46,10 +46,9 @@ export const Navbar = ({ isLoggedIn, onLogout }) => {
             <Link to="/login">Login</Link>
           </li>
         )}
-
         {user.isLoggedIn && (
           <li>
-            <button className="buton-bt">Logout</button>
+            <Link to="/login">Logout</Link>
           </li>
         )}
       </ul>
