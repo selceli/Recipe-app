@@ -10,19 +10,19 @@ import { Login } from './modules/users/Login';
 import { CategoryMeals } from './modules/recipes/Categories/CategoryMeals';
 import { Register } from './modules/users/Register';
 import { RecipeDetails1 } from './modules/recipes/RecipeDetails1';
-import { useContext } from 'react';
-import { UserContext } from './UserContext';
+import { Logout } from './modules/users/Logout';
 
 
-export const AppRouter = (isLoggedIn, onLogin) => {
-    const userLoggedIn = useContext(UserContext);
+export const AppRouter = () => {
     return (
         <Routes>
             <Route
                 path='/'
                 element={<FeaturedRecipes />}
             />
-            <Route path='/login' element={<Login onLogin={onLogin} />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/logout' element={<Logout />} />
+
             <Route
                 path='/user'
                 element={

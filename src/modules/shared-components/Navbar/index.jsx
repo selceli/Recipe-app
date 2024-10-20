@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
 import "./styles.css";
-import { useContext } from "react";
-import { UserContext } from "../../../UserContext";
+import { useUser } from "../../../UserContext";
 
-export const Navbar = ({ isLoggedIn, onLogout }) => {
-  const user = useContext(UserContext);
+export const Navbar = () => {
+  const user = useUser();
 
   return (
     <nav className="navbar">
@@ -15,15 +14,10 @@ export const Navbar = ({ isLoggedIn, onLogout }) => {
         <li>
           <Link to="/recipes/search">Search Recipes</Link>
         </li>
-        {!user.isLoggedIn && (
-          <li>
-            <Link to="/register">Register</Link>
-          </li>
-        )}
         <li>
           <Link to="/register"></Link>
         </li>
-        {user.isLoggedIn && (
+        {user.isLoggedInUser && (
           <li>
             <Link to="/recipes/create">Create New Recipe</Link>
           </li>
@@ -31,24 +25,24 @@ export const Navbar = ({ isLoggedIn, onLogout }) => {
         <li>
           <Link to="/recipes/categories">Categories</Link>
         </li>
-        {user.isLoggedIn && (
+        {user.isLoggedInUser && (
           <li>
             <Link to="/account">Account</Link>
           </li>
         )}
-        {user.isLoggedIn && (
+        {user.isLoggedInUser && (
           <li>
             <Link to="/settings">Settings</Link>
           </li>
         )}
-        {!user.isLoggedIn && (
+        {!user.isLoggedInUser && (
           <li>
             <Link to="/login">Login</Link>
           </li>
         )}
-        {user.isLoggedIn && (
+        {user.isLoggedInUser && (
           <li>
-            <Link to="/">Logout</Link>
+            <Link to="/logout">Logout</Link>
           </li>
         )}
       </ul>

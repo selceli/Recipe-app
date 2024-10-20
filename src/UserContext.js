@@ -1,6 +1,4 @@
 import { createContext, useContext, useReducer } from 'react';
-import { Navigate } from 'react-router-dom';
-
 
 export const UserContext = createContext();
 export const UserDispatchContext = createContext();
@@ -23,6 +21,7 @@ export const UserActionTypes = {
     Login: "login",
     Logout: "logout",
     Update: "update",
+    Register: 'register',
 };
 
 function userReducer(state, action) {
@@ -33,24 +32,14 @@ function userReducer(state, action) {
                 action.payload.password === "12345"
             ) {
                 return { isLoggedInUser: true, email: action.payload.email };
-                Navigate("/")
             } else return { isLoggedInUser: false };
         case UserActionTypes.Logout:
             return { isLoggedInUser: false };
         case UserActionTypes.Update:
             return { ...state, ...action.payload };
+        case UserActionTypes.Register: 
+            return { isLoggedInUser: true, email: action.payload.email, name: action.payload.name };
         default:
             throw Error;
     }
 }
-export const loginUser = (dispatch, email, password) => {
-    if (email === "johndoe@gmail.com" && password === "12345") {
-        dispatch({ type: UserActionTypes.Login, payload: { email } });
-        return true;
-    }
-    return false;
-};
-
-export const logoutUser = (dispatch) => {
-    dispatch({ type: UserActionTypes.Logout });
-};
