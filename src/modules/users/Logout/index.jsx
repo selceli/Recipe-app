@@ -1,32 +1,15 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router } from "react-router-dom";
-import { AppRouter } from "./AppRouter";
-import { Navbar } from "./components/Navbar";
-
+import { useNavigate } from "react-router-dom";
+import { UserActionTypes, useUserDispatch } from "../../../UserContext";
 import "./styles.css";
+import { useEffect } from "react";
 
 export const Logout = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const dispatch = useUserDispatch();
+  const navigate = useNavigate();
 
-  const handleLogin = (email, password) => {
-    if (email === "email" && password === "password") {
-      console.log("Giriş başarılı");
-      setIsLoggedIn(true);
-      localStorage.setItem("isLoggedIn", "true");
-      return true;
-    }
-
-    return false;
-  };
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-    localStorage.removeItem("isLoggedIn");
-  };
-
-  return (
-    <Router>
-      <Navbar isLoggedIn={isLoggedIn} onLogout={handleLogout} />
-      <AppRouter isLoggedIn={isLoggedIn} onLogin={handleLogin} />
-    </Router>
-  );
+  useEffect(() => {
+    dispatch({ type: UserActionTypes.Logout });
+    navigate("/");
+  }, []);
+  return <></>;
 };

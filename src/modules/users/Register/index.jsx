@@ -1,15 +1,19 @@
-import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  UserActionTypes,
+  useUser,
+  useUserDispatch,
+} from "../../../UserContext";
 import "./styles.css";
-import { UserDispatchContext } from "../../../UserContext";
-import { UserActionTypes } from "../../../UserContext";
-import { Navigate } from "react-router-dom";
-import { Login } from "../Login";
+import { useEffect, useState } from "react";
 
 export const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const dispatch = useContext(UserDispatchContext);
+  const dispatch = useUserDispatch();
+  const user = useUser();
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -20,8 +24,14 @@ export const Register = () => {
     });
   };
 
+  useEffect(() => {
+    if (user.isLoggedInUser) {
+      navigate("/");
+    }
+  }, [user]);
+
   return (
-    <form onSubmit={handleSubmit} className="form">
+    <form onSubmit={handleSubmit} className="form register-form">
       <h1>Register</h1>
 
       <label htmlFor="name">Name</label>
@@ -32,34 +42,25 @@ export const Register = () => {
         onChange={(e) => setName(e.target.value)}
       />
 
-      <form className="register-form">
-        <label htmlFor="email">Email</label>
-        <input
-          type="email"
-          id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+      <label htmlFor="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
 
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button
-          onClick={() => {
-            if (Login) {
-              Navigate("/");
-            }
-          }}
-          type="submit"
-          className="btn--success buton"
-        >
-          Register
-        </button>
-      </form>
+      <label htmlFor="passwordpassword">Password</label>
+      <input
+        type="password"
+        id="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+
+      <button type="submit" className="btn--success buton">
+        Register
+      </button>
     </form>
   );
 };

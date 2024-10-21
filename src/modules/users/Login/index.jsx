@@ -1,31 +1,37 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./styles.css";
 import {
-  loginUser,
+  useUser,
   UserActionTypes,
   useUserDispatch,
 } from "../../../UserContext";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const user = useUser();
   const dispatch = useUserDispatch();
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (loginUser(email, password)) {
-      console.log("Giriş başarılı");
-    } else {
-      console.log("Giriş başarısız");
-    }
+    // if (loginUser(email, password)) {
+    //   console.log("Giriş başarılı");
+    // } else {
+    //   console.log("Giriş başarısız");
+    // }
     dispatch({
-      type: UserActionTypes,
+      type: UserActionTypes.Login,
       payload: { email: email, password: password },
     });
   };
+
+  useEffect(() => {
+    if (user.isLoggedInUser) {
+      navigate("/");
+    }
+  }, [user]);
 
   return (
     <div className="login-container">
@@ -46,15 +52,7 @@ export const Login = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button
-          type="submit"
-          className="btn--success"
-          onClick={() => {
-            if (Login) {
-              Navigate("/");
-            }
-          }}
-        >
+        <button type="submit" className="btn--success">
           Login
         </button>
         <div className="register">
