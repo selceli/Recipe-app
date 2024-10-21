@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import "./styles.css";
 import {
+,
+
+  useUser,
+
   UserActionTypes,
   useUserDispatch,
   useUser
@@ -29,7 +33,11 @@ export const Login = () => {
 
   useEffect(() => {
     if (user.isLoggedInUser) {
+
       navigate('/');
+
+      navigate("/");
+
     }
   }, [user]);
 
@@ -52,10 +60,14 @@ export const Login = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+
         <button
           type="submit"
           className="btn--success"
         >
+
+        <button type="submit" className="btn--success">
+
           Login
         </button>
         <div className="register">

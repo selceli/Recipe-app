@@ -10,7 +10,10 @@ import { Login } from './modules/users/Login';
 import { CategoryMeals } from './modules/recipes/Categories/CategoryMeals';
 import { Register } from './modules/users/Register';
 import { RecipeDetails1 } from './modules/recipes/RecipeDetails1';
+
 import { Logout } from './modules/users/Logout';
+=======
+lesson38--selcan
 
 
 export const AppRouter = () => {
@@ -21,7 +24,9 @@ export const AppRouter = () => {
                 element={<FeaturedRecipes />}
             />
             <Route path='/login' element={<Login />} />
+
             <Route path='/logout' element={<Logout />} />
+
 
             <Route
                 path='/user'
