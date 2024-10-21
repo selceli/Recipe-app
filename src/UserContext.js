@@ -41,10 +41,17 @@ function userReducer(state, action) {
         case UserActionTypes.Update:
             return { ...state, ...action.payload };
         case UserActionTypes.Register:
-            return {
-                isLoggedInUser: true, email: action.payload.email,
-                name: action.payload.name
-            };
+
+            if (
+                action.payload.name === "johndoe" &&
+                action.payload.email === "johndoe@gmail.com" &&
+                action.payload.password === "12345"
+            ) {
+                return {
+                    isLoggedInUser: true, email: action.payload.email,
+                    name: action.payload.name
+                };
+            }
         default:
             throw Error;
     }

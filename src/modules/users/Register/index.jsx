@@ -20,7 +20,7 @@ export const Register = () => {
 
     dispatch({
       type: UserActionTypes.Register,
-      payload: { email: email, password: password },
+      payload: { email: email, password: password, name: name },
     });
   };
 
@@ -28,7 +28,7 @@ export const Register = () => {
     if (user.isLoggedInUser) {
       navigate("/");
     }
-  }, [user]);
+  }, [user, navigate]);
 
   return (
     <form onSubmit={handleSubmit} className="form register-form">

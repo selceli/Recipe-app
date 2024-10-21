@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { UserActionTypes, useUserDispatch } from "../../../UserContext";
-import "./styles.css";
+
 import { useEffect } from "react";
 
 export const Logout = () => {

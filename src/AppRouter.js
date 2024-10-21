@@ -10,6 +10,7 @@ import { Login } from './modules/users/Login';
 import { CategoryMeals } from './modules/recipes/Categories/CategoryMeals';
 import { Register } from './modules/users/Register';
 import { RecipeDetails1 } from './modules/recipes/RecipeDetails1';
+import { Logout } from './modules/users/Logout';
 
 
 export const AppRouter = () => {
@@ -62,6 +63,7 @@ export const AppRouter = () => {
                     <h1>Account Page</h1>
                 </ProtectedRoute>}
             />
+            <Route path="/logout" element={<Logout />} />
             <Route path='/register' element={<Register />} />
 
             <Route path="*" element={<h1>404 - Sayfa Bulunamadi</h1>} />
