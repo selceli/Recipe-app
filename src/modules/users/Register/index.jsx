@@ -31,36 +31,41 @@ export const Register = () => {
   }, [user, navigate]);
 
   return (
-    <form onSubmit={handleSubmit} className="form register-form">
-      <h1>Register</h1>
+    <form onSubmit={handleSubmit}>
+      <div className="register-form">
+        <h1>Register</h1>
 
-      <label htmlFor="name">Name</label>
-      <input
-        type="name"
-        id="name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
+        <label htmlFor="name">Name</label>
+        <input
+          className="input"
+          type="name"
+          id="name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
 
-      <label htmlFor="email">Email</label>
-      <input
-        type="email"
-        id="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
+        <label htmlFor="email">Email</label>
+        <input
+          className="input"
+          type="email"
+          id="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
 
-      <label htmlFor="passwordpassword">Password</label>
-      <input
-        type="password"
-        id="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
+        <label htmlFor="password">Password</label>
+        <input
+          className="input"
+          type="password"
+          id="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
 
-      <button type="submit" className="btn--success buton">
-        Register
-      </button>
+        <button type="submit" className="btn--success buton">
+          Register
+        </button>
+      </div>
     </form>
   );
 };

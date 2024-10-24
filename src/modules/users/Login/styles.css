@@ -17,9 +17,13 @@ input {
 button {
   height: 2rem;
   width: auto;
+  padding: 0 40px;
 }
 
 .register {
   display: flex;
   flex-direction: column;
+}
+.btn-success {
+  background-color: #4caf50;
 }

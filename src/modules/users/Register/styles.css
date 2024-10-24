@@ -1,7 +1,11 @@
-.form {
+* {
+  box-sizing: border-box;
+}
+
+form {
   border: 1px solid grey;
   border-radius: 20px;
-  padding: 30px;
+  padding: 50px;
   max-width: 70%;
   margin-top: 100px;
 }
@@ -12,7 +16,18 @@
   align-content: center;
   gap: 1rem;
 }
-input,
-button {
+.btn--success {
   width: 100%;
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+label {
+}
+.input {
+  width: 100%;
+  margin-bottom: 5px;
 }

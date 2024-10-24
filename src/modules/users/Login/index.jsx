@@ -52,19 +52,26 @@ export const Login = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit" className="btn--success">
+        <button type="submit" className="btn-success">
           Login
         </button>
         <div className="register">
-          <p>If you haven't an account yet </p>
+          <p>
+            If you haven't an account yet{" "}
+            <span
+              onClick={() => navigate("/register")}
+              type="button"
+              className="buton"
+              style={{
+                cursor: "pointer",
+                color: "#4CAF50",
+                fontWeight: "bolder",
+              }}
+            >
+              Register.
+            </span>
+          </p>
         </div>
-        <button
-          onClick={() => navigate("/register")}
-          type="button"
-          className="btn--success buton"
-        >
-          Register
-        </button>
       </form>
     </div>
   );
