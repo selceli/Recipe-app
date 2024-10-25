@@ -1,6 +1,6 @@
 import { createContext, useContext, useReducer } from 'react';
-import { Navigate } from 'react-router-dom';
-import { Register } from './modules/users/Register';
+// import { Navigate } from 'react-router-dom';
+// import { Register } from './modules/users/Register';
 
 
 export const UserContext = createContext();
@@ -29,6 +29,21 @@ export const UserActionTypes = {
 
 function userReducer(state, action) {
     switch (action.type) {
+        case UserActionTypes.Register:
+            if (
+                action.payload.email &&
+                action.payload.password &&
+                action.payload.name
+            ) {
+                return {
+                    isLoggedInUser: true,
+                    email: action.payload.email,
+                    name: action.payload.name,
+                };
+            } else {
+                throw Error;
+            }
+
         case UserActionTypes.Login:
             if (
                 action.payload.email === "johndoe@gmail.com" &&
@@ -43,6 +58,7 @@ function userReducer(state, action) {
         case UserActionTypes.Register:
 
             if (
+
                 action.payload.name === "johndoe" &&
                 action.payload.email === "johndoe@gmail.com" &&
                 action.payload.password === "12345"
