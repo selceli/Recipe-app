@@ -9,6 +9,8 @@ export const UserDispatchContext = createContext();
 export const useUser = () => useContext(UserContext);
 export const useUserDispatch = () => useContext(UserDispatchContext)
 
+let registerUsers = [{ email: "johndoe@getDefaultNormalizer.com", password: "12345", userName: "johndoe" }];
+
 export const UserProvider = ({ children, initialState }) => {
     const [user, dispatch] = useReducer(userReducer, initialState ?? {});
     return (
@@ -35,6 +37,11 @@ function userReducer(state, action) {
                 action.payload.password &&
                 action.payload.name
             ) {
+                registerUsers.push({
+                    email: action.payload.email,
+                    password: action.payload.password,
+                    name: action.payload.name,
+                });
                 return {
                     isLoggedInUser: true,
                     email: action.payload.email,
@@ -46,8 +53,10 @@ function userReducer(state, action) {
 
         case UserActionTypes.Login:
             if (
-                action.payload.email === "johndoe@gmail.com" &&
-                action.payload.password === "12345"
+                registerUsers.find((user) =>
+                    user.email === action.payload.email &&
+                    user.password === action.payload.password)
+
             ) {
                 return { isLoggedInUser: true, email: action.payload.email };
             } else return { isLoggedInUser: false };
@@ -55,19 +64,7 @@ function userReducer(state, action) {
             return { isLoggedInUser: false };
         case UserActionTypes.Update:
             return { ...state, ...action.payload };
-        case UserActionTypes.Register:
 
-            if (
-
-                action.payload.name === "johndoe" &&
-                action.payload.email === "johndoe@gmail.com" &&
-                action.payload.password === "12345"
-            ) {
-                return {
-                    isLoggedInUser: true, email: action.payload.email,
-                    name: action.payload.name
-                };
-            }
         default:
             throw Error;
     }
