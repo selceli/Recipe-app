@@ -1,0 +1,19 @@
+.recipe-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.instructions {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  resize: none;
+  min-height: 60px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+input {
+  width: 100%;
+}

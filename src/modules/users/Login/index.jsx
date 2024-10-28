@@ -16,11 +16,7 @@ export const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // if (loginUser(email, password)) {
-    //   console.log("Giriş başarılı");
-    // } else {
-    //   console.log("Giriş başarısız");
-    // }
+
     dispatch({
       type: UserActionTypes.Login,
       payload: { email: email, password: password },
