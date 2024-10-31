@@ -38,7 +38,7 @@ export const CreateNewRecipe = () => {
     };
     console.log("Form submitted:", recipeData);
 
-    dispatch({ type: "ADD_RECİPE", payload: recipeData });
+    dispatch({ type: "ADD_RECIPE", payload: recipeData });
   };
   return (
     <ProtectedRoute>
@@ -52,6 +52,27 @@ export const CreateNewRecipe = () => {
               minLength: {
                 value: 3,
                 message: "Meal name should be at least 3 characters.",
+              },
+            })}
+          />
+
+          <label htmlFor="strTags">Select Tags</label>
+          <select id="strTags" {...register("strTags")}>
+            {tag.map((tag) => (
+              <option key={tag} value={tag}>
+                {tag}
+              </option>
+            ))}
+          </select>
+
+          <label htmlFor="strDrinkAlternate">Drink name</label>
+          <input
+            style={{ width: "100% " }}
+            id="strDrinkAlternate"
+            {...register("strDrinkAlternate", {
+              minLength: {
+                value: 3,
+                message: "Drink name should be at least 3 characters.",
               },
             })}
           />
@@ -88,12 +109,69 @@ export const CreateNewRecipe = () => {
           <label htmlFor="ingredient2">Ingredient 2</label>
           <textarea id="ingredient2" {...register("ingredient2")} />
 
+          <label htmlFor="ingredient3">Malzeme 3</label>
+          <input id="ingredient3" {...register("strIngredient3")} />
+
+          <label htmlFor="ingredient4">Malzeme 4</label>
+          <input id="ingredient4" {...register("strIngredient4")} />
+
+          <label htmlFor="ingredient5">Malzeme 5</label>
+          <input id="ingredient5" {...register("strIngredient5")} />
+
+          <label htmlFor="ingredient6">Malzeme 6</label>
+          <input id="ingredient6" {...register("strIngredient6")} />
+
+          <label htmlFor="ingredient7">Malzeme 7</label>
+          <input id="ingredient7" {...register("strIngredient7")} />
+
+          <label htmlFor="ingredient8">Malzeme 8</label>
+          <input id="ingredient8" {...register("strIngredient8")} />
+
+          <label htmlFor="ingredient9">Malzeme 9</label>
+          <input id="ingredient9" {...register("strIngredient9")} />
+
+          <label htmlFor="ingredient10">Malzeme 10</label>
+          <input id="ingredient10" {...register("strIngredient10")} />
+
+          <label htmlFor="strMealThumb">Meal Photo</label>
+          <input
+            type="file"
+            style={{ width: "100% " }}
+            id="strMealThumb"
+            {...register("strMealThumb")}
+          />
+          <label htmlFor="strYoutube">You Tube</label>
+          <input
+            type="text"
+            style={{ width: "100% " }}
+            id="strYoutube"
+            {...register("strYoutube", {
+              required: "You Tube bağlantisi gereklidir.",
+              pattern: {
+                value: /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$/,
+                message: "Geçerli bir YouTube bağlantisi girin.",
+              },
+            })}
+          />
+
           <button type="submit">Submit</button>
         </form>
       </div>
     </ProtectedRoute>
   );
 };
+
+const tag = [
+  "Vegan",
+  "Gluten-Free",
+  "Dairy-Free",
+  "Nut-Free",
+  "Low-Carb",
+  "High-Protein",
+  "Quick",
+  "Easy",
+];
+
 const areas = [
   "American",
   "Chinese",

@@ -26,7 +26,7 @@ export const RecipeProvider = ({ children }) => {
 
 const recipeReducer = (state, action) => {
     switch (action.type) {
-        case "ADD_RECİPE":
+        case "ADD_RECIPE":
             return {
                 ...state,
                 recipes: [...state.recipes, action.payload],
