@@ -104,10 +104,10 @@ export const CreateNewRecipe = () => {
           />
 
           <label htmlFor="ingredient1">Ingredient 1</label>
-          <textarea id="ingredient1" {...register("ingredient1")} />
+          <input id="ingredient1" {...register("ingredient1")} />
 
           <label htmlFor="ingredient2">Ingredient 2</label>
-          <textarea id="ingredient2" {...register("ingredient2")} />
+          <input id="ingredient2" {...register("ingredient2")} />
 
           <label htmlFor="ingredient3">Malzeme 3</label>
           <input id="ingredient3" {...register("strIngredient3")} />
