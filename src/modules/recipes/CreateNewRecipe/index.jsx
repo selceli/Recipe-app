@@ -2,6 +2,7 @@ import { ProtectedRoute } from "../../../ProtectedRoute";
 import { useForm } from "react-hook-form";
 import { useRecipeDispatch } from "../../../RecipeContext";
 import "./styles.css";
+import RecipeForm from "../RecipeForm";
 
 export const CreateNewRecipe = () => {
   console.log("CreateNewRecipe rendered");
@@ -96,42 +97,16 @@ export const CreateNewRecipe = () => {
             ))}
           </select>
 
+          <ProtectedRoute>
+            <RecipeForm />
+          </ProtectedRoute>
+
           <label htmlFor="strInstructions">Cooking Instructions</label>
           <textarea
             className="instructions"
             id="strInstructions"
             {...register("strInstructions")}
           />
-
-          <label htmlFor="ingredient1">Ingredient 1</label>
-          <input id="ingredient1" {...register("ingredient1")} />
-
-          <label htmlFor="ingredient2">Ingredient 2</label>
-          <input id="ingredient2" {...register("ingredient2")} />
-
-          <label htmlFor="ingredient3">Malzeme 3</label>
-          <input id="ingredient3" {...register("strIngredient3")} />
-
-          <label htmlFor="ingredient4">Malzeme 4</label>
-          <input id="ingredient4" {...register("strIngredient4")} />
-
-          <label htmlFor="ingredient5">Malzeme 5</label>
-          <input id="ingredient5" {...register("strIngredient5")} />
-
-          <label htmlFor="ingredient6">Malzeme 6</label>
-          <input id="ingredient6" {...register("strIngredient6")} />
-
-          <label htmlFor="ingredient7">Malzeme 7</label>
-          <input id="ingredient7" {...register("strIngredient7")} />
-
-          <label htmlFor="ingredient8">Malzeme 8</label>
-          <input id="ingredient8" {...register("strIngredient8")} />
-
-          <label htmlFor="ingredient9">Malzeme 9</label>
-          <input id="ingredient9" {...register("strIngredient9")} />
-
-          <label htmlFor="ingredient10">Malzeme 10</label>
-          <input id="ingredient10" {...register("strIngredient10")} />
 
           <label htmlFor="strMealThumb">Meal Photo</label>
           <input
@@ -140,13 +115,13 @@ export const CreateNewRecipe = () => {
             id="strMealThumb"
             {...register("strMealThumb")}
           />
+
           <label htmlFor="strYoutube">You Tube</label>
           <input
             type="text"
             style={{ width: "100% " }}
             id="strYoutube"
             {...register("strYoutube", {
-              required: "You Tube bağlantisi gereklidir.",
               pattern: {
                 value: /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$/,
                 message: "Geçerli bir YouTube bağlantisi girin.",
@@ -154,7 +129,41 @@ export const CreateNewRecipe = () => {
             })}
           />
 
-          <button type="submit">Submit</button>
+          <label htmlFor="strSource">Source</label>
+          <input
+            type="text"
+            style={{ width: "100% " }}
+            id="strSource"
+            {...register("strSource", {
+              value: "",
+            })}
+          />
+
+          <label htmlFor="strImageSource">Image Source</label>
+          <input
+            type="text"
+            style={{ width: "100% " }}
+            id="strImageSource"
+            {...register("strSource", {
+              value: "",
+            })}
+          />
+
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <label
+              htmlFor="strCreativeCommonsConfirmed"
+              style={{ marginRight: "5px" }}
+            >
+              Has A Creative Common:
+            </label>
+            <input
+              type="checkbox"
+              style={{ width: "20px", marginLeft: "Spx" }}
+              id="strCreativeCommonsConfirmed"
+              {...register("strCreativeCommonsConfirmed")}
+            />
+          </div>
+          <button type="submit">Save Recipe</button>
         </form>
       </div>
     </ProtectedRoute>
