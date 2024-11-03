@@ -135,7 +135,7 @@ export const CreateNewRecipe = () => {
             style={{ width: "100% " }}
             id="strSource"
             {...register("strSource", {
-              value: "",
+              value: "#",
             })}
           />
 
@@ -145,7 +145,7 @@ export const CreateNewRecipe = () => {
             style={{ width: "100% " }}
             id="strImageSource"
             {...register("strSource", {
-              value: "",
+              value: "#",
             })}
           />
 
