@@ -5,15 +5,12 @@ import { useForm } from "react-hook-form";
 
 function RecipeForm() {
   const [recipeName, setRecipeName] = useState("");
-  const [ingredients, setingredients] = useState([
+  const [ingredients, setIngredients] = useState([
     { name: "", measurement: "" },
   ]);
 
   const dispatch = useRecipeDispatch();
-  const {
-    register,
-    formState: { errors },
-  } = useForm({
+  const { register } = useForm({
     defaultValues: {
       strMeal: "",
       strCategory: "Beef",
@@ -26,24 +23,32 @@ function RecipeForm() {
 
   const handleAddIngredient = () => {
     if (ingredients.length <= 20) {
-      setingredients([...ingredients, { name: "", measurement: "" }]);
+      setIngredients([...ingredients, { name: "", measurement: "" }]);
     }
   };
 
   const handleRemoveIngredient = (index) => {
     const newIngredients = ingredients.filter((_, i) => i !== index);
-    setingredients(newIngredients);
+    setIngredients(newIngredients);
   };
 
   const handleIngredientChange = (index, field, value) => {
     const newIngredients = [...ingredients];
     newIngredients[index][field] = value;
-    setingredients(newIngredients);
+    setIngredients(newIngredients);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log({ recipeName, ingredients });
+
+    const recipeData = {
+      name: recipeName,
+      ingredients: ingredients,
+    };
+    dispatch({ type: "ADD_RECIPE", payload: recipeData });
+    setRecipeName("");
+    setIngredients([{ name: "", measurement: "" }]);
   };
 
   return (
@@ -73,7 +78,6 @@ function RecipeForm() {
             onChange={(e) =>
               handleIngredientChange(index, "measurement", e.target.value)
             }
-            placeholder="measurement"
           >
             <option value="" disabled>
               Select measurement
@@ -84,22 +88,21 @@ function RecipeForm() {
               </option>
             ))}
           </select>
-          <div>
-            <h2>Preview</h2>
-            <ul>
-              {ingredients.map((ingredient, index) => (
-                <li key={index}>
-                  {ingredient.name} - {ingredient.measurement}
-                </li>
-              ))}
-            </ul>
-          </div>
 
           <button type="button" onClick={() => handleRemoveIngredient(index)}>
             Remove
           </button>
         </div>
       ))}
+
+      <h2>Preview</h2>
+      <ul>
+        {ingredients.map((ingredient, index) => (
+          <li key={index}>
+            {ingredient.name} - {ingredient.measurement}
+          </li>
+        ))}
+      </ul>
 
       <button type="button" onClick={handleAddIngredient}>
         Add Ingredient
@@ -112,7 +115,7 @@ const measurements = [
   "1/4 cup",
   "3 cloves",
   "1 tin ",
-  "1/2 teaspoon",
+  "1 teaspoon",
   "1/2 teaspoon",
   "6 leaves",
   "spinkling",
