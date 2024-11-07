@@ -13,6 +13,7 @@ const initialState = {
 };
 
 
+
 export const RecipeProvider = ({ children }) => {
     const [state, dispatch] = useReducer(recipeReducer, initialState ?? {});
     return (
@@ -24,7 +25,7 @@ export const RecipeProvider = ({ children }) => {
     );
 };
 
-const recipeReducer = (state, action) => {
+export const recipeReducer = (state, action) => {
     switch (action.type) {
         case "ADD_RECIPE":
             return {
@@ -36,6 +37,12 @@ const recipeReducer = (state, action) => {
     }
 };
 
+export const UserActionTypes = {
+    Login: "login",
+    Logout: "logout",
+    Update: "update",
+    Register: "register",
+};
 
 
 

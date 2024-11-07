@@ -25,7 +25,6 @@ export const CreateNewRecipe = () => {
 
   const onSubmit = (data) => {
     const recipeData = {
-      idMeal: null,
       strMeal: data.strMeal,
       strDrinkAlternate: null,
       strCategory: data.strCategory,
@@ -34,10 +33,53 @@ export const CreateNewRecipe = () => {
       strMealThumb: null,
       strTags: null,
       strYoutube: null,
+
       strIngredient1: data.ingredient1,
       strIngredient2: data.ingredient2,
+      strIngredient3: data.ingredient3,
+      strIngredient4: data.ingredient4,
+      strIngredient5: data.ingredient5,
+      strIngredient6: data.ingredient6,
+      strIngredient7: data.ingredient7,
+      strIngredient8: data.ingredient8,
+      strIngredient9: data.ingredient9,
+      strIngredient10: data.ingredient10,
+      strIngredient11: data.ingredient11,
+      strIngredient12: data.ingredient12,
+      strIngredient13: data.ingredient13,
+      strIngredient14: data.ingredient14,
+      strIngredient15: data.ingredient15,
+      strIngredient16: data.ingredient16,
+      strIngredient17: data.ingredient17,
+      strIngredient18: data.ingredient18,
+      strIngredient19: data.ingredient19,
+      strIngredient20: data.ingredient20,
+
+      strMeasure1: data.measure1,
+      strMeasure2: data.measure2,
+      strMeasure3: data.measure3,
+      strMeasure4: data.measure4,
+      strMeasure5: data.measure5,
+      strMeasure6: data.measure6,
+      strMeasure7: data.measure7,
+      strMeasure8: data.measure8,
+      strMeasure9: data.measure9,
+      strMeasure10: data.measure10,
+      strMeasure11: data.measure11,
+      strMeasure12: data.measure12,
+      strMeasure13: data.measure13,
+      strMeasure14: data.measure14,
+      strMeasure15: data.measure15,
+      strMeasure16: data.measure16,
+      strMeasure17: data.measure17,
+      strMeasure18: data.measure18,
+      strMeasure19: data.measure19,
+      strMeasure20: data.measure20,
+
+      strSource: data.strSource || null,
+      strImageSource: data.strImageSource || null,
+      strCreativeCommonsConfirmed: data.strCreativeCommonsConfirmed || null,
     };
-    console.log("Form submitted:", recipeData);
 
     dispatch({ type: "ADD_RECIPE", payload: recipeData });
   };
