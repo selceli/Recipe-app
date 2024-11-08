@@ -3,9 +3,6 @@
 }
 
 form {
-  border: 1px solid grey;
-  border-radius: 20px;
-  padding: 50px;
   max-width: 70%;
   margin-top: 100px;
 }
@@ -15,17 +12,18 @@ form {
   justify-content: center;
   align-content: center;
   gap: 1rem;
+  background-color: white;
+  padding: 50px;
+  border-radius: 20px;
 }
 .btn--success {
   width: 100%;
   padding: 10px;
-  background-color: #4caf50;
+  background-color: cadetblue;
   color: white;
   border: none;
   cursor: pointer;
   border-radius: 5px;
-}
-label {
 }
 .input {
   width: 100%;

@@ -1,9 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import {
-  UserActionTypes,
-  useUser,
-  useUserDispatch,
-} from "../../../UserContext";
+import { UserActionTypes, useUser, useUserDispatch } from "../UserContext";
 import "./styles.css";
 import { useEffect, useState } from "react";
 

@@ -1,10 +1,6 @@
 import { useEffect, useState } from "react";
 import "./styles.css";
-import {
-  useUser,
-  UserActionTypes,
-  useUserDispatch,
-} from "../../../UserContext";
+import { useUser, UserActionTypes, useUserDispatch } from "../UserContext";
 import { useNavigate } from "react-router-dom";
 
 export const Login = () => {

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./style.css";
+import "./styles.module.css";
 import { useRecipeDispatch } from "../../../RecipeContext";
 import { useForm } from "react-hook-form";
 
@@ -88,10 +88,11 @@ function RecipeForm() {
               </option>
             ))}
           </select>
-
-          <button type="button" onClick={() => handleRemoveIngredient(index)}>
-            Remove
-          </button>
+          <div>
+            <button type="button" onClick={() => handleRemoveIngredient(index)}>
+              Remove
+            </button>
+          </div>
         </div>
       ))}
 

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { UserActionTypes, useUserDispatch } from "../../../UserContext";
+import { UserActionTypes, useUserDispatch } from "../UserContext";
 
 import { useEffect } from "react";
 

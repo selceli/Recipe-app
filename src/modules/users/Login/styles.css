@@ -10,6 +10,9 @@
   max-width: 70%;
   margin-top: 100px;
 }
+.login-container {
+  background-color: white;
+}
 input {
   width: 80%;
   height: 2rem;
@@ -25,5 +28,5 @@ button {
   flex-direction: column;
 }
 .btn-success {
-  background-color: #4caf50;
+  background-color: cadetblue;
 }
