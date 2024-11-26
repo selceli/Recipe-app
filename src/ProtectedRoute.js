@@ -1,8 +1,13 @@
 import { Navigate } from 'react-router-dom';
 import { useContext } from 'react';
-import { RecipeContext } from './RecipeContext';
+
+import { UserContext } from './modules/users/UserContext';
+
+
 
 export const ProtectedRoute = ({ children }) => {
-    const userLoggedIn = useContext(RecipeContext);
+    const state = useContext(UserContext);
+    // const userLoggedIn = useContext(RecipeContext);
+    const userLoggedIn = state.userLoggedIn;
     return userLoggedIn ? children : <Navigate to='/login' replace={true} />;
 };

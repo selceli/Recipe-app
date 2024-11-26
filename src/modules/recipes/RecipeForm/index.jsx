@@ -53,15 +53,8 @@ function RecipeForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={recipeName}
-        onChange={(e) => setRecipeName(e.target.value)}
-        placeholder="Recipe Name"
-      />
-
       {ingredients.map((ingredient, index) => (
-        <div key={index}>
+        <div className="form--container" key={index}>
           <input
             type="text"
             value={ingredient.name}
@@ -88,26 +81,16 @@ function RecipeForm() {
               </option>
             ))}
           </select>
-          <div>
-            <button type="button" onClick={() => handleRemoveIngredient(index)}>
-              Remove
-            </button>
-          </div>
+
+          <button type="button" onClick={handleAddIngredient}>
+            Add Ingredient
+          </button>
+
+          <button type="button" onClick={() => handleRemoveIngredient(index)}>
+            Remove
+          </button>
         </div>
       ))}
-
-      <h2>Preview</h2>
-      <ul>
-        {ingredients.map((ingredient, index) => (
-          <li key={index}>
-            {ingredient.name} - {ingredient.measurement}
-          </li>
-        ))}
-      </ul>
-
-      <button type="button" onClick={handleAddIngredient}>
-        Add Ingredient
-      </button>
     </form>
   );
 }

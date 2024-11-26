@@ -54,11 +54,13 @@ export const CategoryMeals = () => {
         <ul>
           {meals.map((meal) => (
             <li key={meal.idMeal}>
-              <h2>{meal.strMeal}</h2>
+              <h2 style={{ fontSize: "25px", padding: "15px 0" }}>
+                {meal.strMeal}
+              </h2>
               <img
                 src={meal.strMealThumb}
                 alt={meal.strMeal}
-                style={{ width: "200px" }}
+                style={{ width: "200px", padding: " 15px 0" }}
               />
               <p>
                 Ingredient: {meal.strIngredient1},{meal.strIngredient2},

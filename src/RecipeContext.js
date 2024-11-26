@@ -10,12 +10,13 @@ export const useRecipeDispatch = () => useContext(RecipeDispatchContext);
 
 const initialState = {
     recipes: [],
+
 };
 
 
 
 export const RecipeProvider = ({ children }) => {
-    const [state, dispatch] = useReducer(recipeReducer, initialState ?? {});
+    const [state, dispatch] = useReducer(recipeReducer, initialState);
     return (
         <RecipeContext.Provider value={state}>
             <RecipeDispatchContext.Provider value={dispatch}>
@@ -31,9 +32,16 @@ export const recipeReducer = (state, action) => {
             return {
                 ...state,
                 recipes: [...state.recipes, action.payload],
-            }
+            };
+
+        case "update":
+            return {
+                ...state,
+                recipes: action.payload,
+            };
         default:
-            throw Error;
+            throw new Error(`Unknown action type: ${action.type}`);
+
     }
 };
 

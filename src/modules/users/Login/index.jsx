@@ -12,18 +12,17 @@ export const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    dispatch({
-      type: UserActionTypes.Login,
-      payload: { email: email, password: password },
-    });
-  };
-
-  useEffect(() => {
-    if (user.isLoggedInUser) {
+    if (email && password) {
+      dispatch({
+        type: UserActionTypes.Login,
+        payload: { email, password },
+      });
       navigate("/");
+    } else {
+      console.log("Error");
     }
-  }, [user]);
+    console.log("User loged in");
+  };
 
   return (
     <div className="login-container">

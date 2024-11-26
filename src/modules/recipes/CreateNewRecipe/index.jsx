@@ -3,11 +3,15 @@ import { useForm } from "react-hook-form";
 import { useRecipeDispatch } from "../../../RecipeContext";
 import "./styles.css";
 import RecipeForm from "../RecipeForm";
+import { useState } from "react";
 
 export const CreateNewRecipe = () => {
   console.log("CreateNewRecipe rendered");
 
+  const [successMessage, setSuccessMessage] = useState("");
+
   const dispatch = useRecipeDispatch();
+
   const {
     register,
     handleSubmit,
@@ -82,11 +86,13 @@ export const CreateNewRecipe = () => {
     };
 
     dispatch({ type: "ADD_RECIPE", payload: recipeData });
+    setSuccessMessage("Recipe saved successfullly!");
   };
   return (
     <ProtectedRoute>
       <div className="form">
         <form className="recipe-form" onSubmit={handleSubmit(onSubmit)}>
+          <h1>Add New Recipe</h1>
           <label htmlFor="strMeal">Meal name</label>
           <input
             style={{ width: "100% " }}
@@ -197,15 +203,16 @@ export const CreateNewRecipe = () => {
               style={{ marginRight: "5px" }}
             >
               Has A Creative Common:
+              <input
+                type="checkbox"
+                style={{ width: "30px", marginLeft: "10px" }}
+                id="strCreativeCommonsConfirmed"
+                {...register("strCreativeCommonsConfirmed")}
+              />
             </label>
-            <input
-              type="checkbox"
-              style={{ width: "20px", marginLeft: "Spx" }}
-              id="strCreativeCommonsConfirmed"
-              {...register("strCreativeCommonsConfirmed")}
-            />
           </div>
           <button type="submit">Save Recipe</button>
+          {successMessage && <p>{successMessage}</p>}
         </form>
       </div>
     </ProtectedRoute>

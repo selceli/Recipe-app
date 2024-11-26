@@ -1,6 +1,4 @@
 import { createContext, useContext, useReducer } from 'react';
-import { Navigate } from 'react-router-dom';
-import { Register } from './Register';
 
 
 export const UserContext = createContext();
@@ -9,12 +7,18 @@ export const UserDispatchContext = createContext();
 export const useUser = () => useContext(UserContext);
 export const useUserDispatch = () => useContext(UserDispatchContext)
 
-let registerUsers = [{ email: "johndoe@getDefaultNormalizer.com", password: "12345", userName: "johndoe" }];
+const initialState = {
+    userLoggedIn: false,
 
-export const UserProvider = ({ children, initialState }) => {
-    const [user, dispatch] = useReducer(userReducer, initialState ?? {});
+};
+
+
+let registerUsers = [];
+
+export const UserProvider = ({ children }) => {
+    const [state, dispatch] = useReducer(userReducer, initialState ?? {});
     return (
-        <UserContext.Provider value={user}>
+        <UserContext.Provider value={state}>
             <UserDispatchContext.Provider value={dispatch}>
                 {children}
             </UserDispatchContext.Provider>
@@ -32,6 +36,9 @@ export const UserActionTypes = {
 function userReducer(state, action) {
     switch (action.type) {
         case UserActionTypes.Register:
+            if (!action.payload) {
+                throw new Error("Payload is undefined");
+            }
             if (
                 action.payload.email &&
                 action.payload.password &&
@@ -43,9 +50,9 @@ function userReducer(state, action) {
                     name: action.payload.name,
                 });
                 return {
-                    isLoggedInUser: true,
-                    email: action.payload.email,
-                    name: action.payload.name,
+                    ...state,
+                    userLoggedIn: true,
+
                 };
             } else {
                 throw Error;
@@ -58,14 +65,26 @@ function userReducer(state, action) {
                     user.password === action.payload.password)
 
             ) {
-                return { isLoggedInUser: true, email: action.payload.email };
-            } else return { isLoggedInUser: false };
+                return {
+                    ...state,
+                    userLoggedIn: true,
+                };
+            } else return {
+                ...state,
+                userLoggedIn: false
+            };
+
         case UserActionTypes.Logout:
-            return { isLoggedInUser: false };
+            return {
+                ...state,
+                userLoggedIn: false
+            };
         case UserActionTypes.Update:
             return { ...state, ...action.payload };
-
         default:
-            throw Error;
+            throw new Error(`Unknown action type: ${action.type}`);
+
+
     }
+
 }

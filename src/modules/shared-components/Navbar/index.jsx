@@ -17,7 +17,7 @@ export const Navbar = () => {
         <li>
           <Link to="/register"></Link>
         </li>
-        {user.isLoggedInUser && (
+        {user.userLoggedIn && (
           <li>
             <Link to="/recipes/create">Create New Recipe</Link>
           </li>
@@ -25,22 +25,22 @@ export const Navbar = () => {
         <li>
           <Link to="/recipes/categories">Categories</Link>
         </li>
-        {user.isLoggedInUser && (
+        {user.userLoggedIn && (
           <li>
             <Link to="/account">Account</Link>
           </li>
         )}
-        {user.isLoggedInUser && (
+        {user.userLoggedIn && (
           <li>
             <Link to="/settings">Settings</Link>
           </li>
         )}
-        {!user.isLoggedInUser && (
+        {!user.userLoggedIn && (
           <li>
             <Link to="/login">Login</Link>
           </li>
         )}
-        {user.isLoggedInUser && (
+        {user.userLoggedIn && (
           <li>
             <Link to="/logout">Logout</Link>
           </li>

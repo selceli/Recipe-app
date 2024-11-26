@@ -4,23 +4,28 @@
   align-items: flex-start;
   justify-content: flex-start;
   gap: 1rem;
-  border: 1px solid grey;
+  border: 1px solid black;
   border-radius: 20px;
   padding: 30px;
   max-width: 70%;
   margin-top: 100px;
 }
+h1 {
+  font-size: 30px;
+}
 .login-container {
   background-color: white;
 }
 input {
-  width: 80%;
+  max-width: 100%;
   height: 2rem;
+  border: 1px solid black;
+  border-radius: 3px;
 }
 button {
   height: 2rem;
   width: auto;
-  padding: 0 40px;
+  padding: 0 20px;
 }
 
 .register {

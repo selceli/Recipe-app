@@ -4,9 +4,9 @@
 
 form {
   max-width: 70%;
-  margin-top: 100px;
 }
 .register-form {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -15,10 +15,11 @@ form {
   background-color: white;
   padding: 50px;
   border-radius: 20px;
+  border: 1px solid black;
+  margin-top: 100px;
 }
 .btn--success {
   width: 100%;
-  padding: 10px;
   background-color: cadetblue;
   color: white;
   border: none;
@@ -26,6 +27,6 @@ form {
   border-radius: 5px;
 }
 .input {
-  width: 100%;
-  margin-bottom: 5px;
+  min-width: 100%;
+  border: 1px solid black;
 }

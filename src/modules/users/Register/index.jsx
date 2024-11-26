@@ -4,10 +4,6 @@ import "./styles.css";
 import { useEffect, useState } from "react";
 
 export const Register = () => {
-  // const [name, setName] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -27,9 +23,10 @@ export const Register = () => {
       }
       dispatch({
         type: UserActionTypes.Register,
-        payload: formData,
-        // payload: { email: setEmail, password: setPassword, name: setName },
+        payload: { name, email, password },
       });
+
+      dispatch({ type: UserActionTypes.Login, payload: { email, password } });
 
       navigate("/");
     } catch (error) {
@@ -40,7 +37,7 @@ export const Register = () => {
   };
 
   useEffect(() => {
-    if (user.isLoggedInUser) {
+    if (user.userLoggedIn) {
       navigate("/");
     }
   }, [user, navigate]);
@@ -55,7 +52,7 @@ export const Register = () => {
       <div className="register-form">
         <h1>Register</h1>
 
-        <label htmlFor="name">Name</label>
+        <label htmlFor="name">Email</label>
         <input
           className="input"
           type="text"
