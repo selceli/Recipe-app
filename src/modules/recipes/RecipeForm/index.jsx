@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./styles.module.css";
-// import { useRecipesDispatch } from "../RecipesProvider";
+
 import { useForm } from "react-hook-form";
 
 function RecipeForm({ onSubmit }) {
@@ -9,7 +9,6 @@ function RecipeForm({ onSubmit }) {
     { name: "", measurement: "" },
   ]);
 
-  // const dispatch = useRecipesDispatch();
   const { register } = useForm({
     defaultValues: {
       strMeal: "",
@@ -49,17 +48,8 @@ function RecipeForm({ onSubmit }) {
     setRecipeName("");
     setIngredients([{ name: "", measurement: "" }]);
 
-    //   const recipeData = {
-    //     name: recipeName,
-    //     ingredients: ingredients,
-    //   };
-    //   dispatch({ type: "ADD_RECIPE", payload: recipeData });
-    //   setRecipeName("");
-    //   setIngredients([{ name: "", measurement: "" }]);
-    // };
-
     return (
-      <form onSubmit={handleSubmit}>
+      <div onSubmit={handleSubmit}>
         {ingredients.map((ingredient, index) => (
           <div className="form--container" key={index}>
             <input
@@ -97,16 +87,15 @@ function RecipeForm({ onSubmit }) {
               placeholder="Or enter measurement"
             ></input>
 
-            <button type="button" onClick={handleAddIngredient}>
-              Add Ingredient
-            </button>
-
             <button type="button" onClick={() => handleRemoveIngredient(index)}>
               Remove
             </button>
           </div>
         ))}
-      </form>
+        <button type="button" onClick={handleAddIngredient}>
+          Add Ingredient
+        </button>
+      </div>
     );
   };
   const measurements = [

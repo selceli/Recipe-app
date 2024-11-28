@@ -4,6 +4,7 @@ export const RECIPE_ACTIONS = {
   update: "update",
   refresh: "refresh",
   deleteAll: "delete_all",
+  addRecipe: "add_recipe",
 };
 
 export const RecipesContext = createContext();
@@ -37,6 +38,9 @@ function userReducer(state, action) {
     }
     case RECIPE_ACTIONS.deleteAll: {
       return [];
+    }
+    case RECIPE_ACTIONS.addRecipe: {
+      return [...state.action.payload];
     }
 
     default:
