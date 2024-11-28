@@ -2,7 +2,7 @@
 import { AppRouter } from './AppRouter';
 import { Navbar } from "./modules/shared-components/Navbar"
 import './App.css';
-import { RecipeProvider } from './RecipeContext';
+import { RecipesProvider } from './modules/recipes/RecipesProvider';
 import { UserProvider } from './modules/users/UserContext';
 
 
@@ -11,14 +11,14 @@ export default function App() {
 
   return (
     <UserProvider>
-      <RecipeProvider>
+      <RecipesProvider>
         <>
           <Navbar />
           <div className="container">
             <AppRouter />
           </div>
         </>
-      </RecipeProvider>
+      </RecipesProvider>
     </UserProvider>
   );
 };

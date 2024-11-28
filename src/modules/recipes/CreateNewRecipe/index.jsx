@@ -1,16 +1,19 @@
 import { ProtectedRoute } from "../../../ProtectedRoute";
 import { useForm } from "react-hook-form";
-import { useRecipeDispatch } from "../../../RecipeContext";
+import { useRecipesDispatch } from "../RecipesProvider";
 import "./styles.css";
 import RecipeForm from "../RecipeForm";
 import { useState } from "react";
 
 export const CreateNewRecipe = () => {
+  const [recipeData, setRecipeData] = useState(null);
   console.log("CreateNewRecipe rendered");
-
+  const handleRecipeSubmit = (data) => {
+    setRecipeData(data);
+  };
   const [successMessage, setSuccessMessage] = useState("");
 
-  const dispatch = useRecipeDispatch();
+  const dispatch = useRecipesDispatch();
 
   const {
     register,
@@ -103,6 +106,7 @@ export const CreateNewRecipe = () => {
                 message: "Meal name should be at least 3 characters.",
               },
             })}
+            required
           />
 
           <label htmlFor="strTags">Select Tags</label>
@@ -112,6 +116,7 @@ export const CreateNewRecipe = () => {
                 {tag}
               </option>
             ))}
+            required
           </select>
 
           <label htmlFor="strDrinkAlternate">Drink name</label>
@@ -134,6 +139,7 @@ export const CreateNewRecipe = () => {
                 {category}
               </option>
             ))}
+            required
           </select>
 
           <label htmlFor="strArea">Select Area</label>
@@ -143,25 +149,25 @@ export const CreateNewRecipe = () => {
                 {area}
               </option>
             ))}
+            required
           </select>
 
-          <ProtectedRoute>
-            <RecipeForm />
-          </ProtectedRoute>
+          <RecipeForm onSubmit={handleRecipeSubmit} />
 
           <label htmlFor="strInstructions">Cooking Instructions</label>
           <textarea
             className="instructions"
             id="strInstructions"
             {...register("strInstructions")}
+            required
           />
-
           <label htmlFor="strMealThumb">Meal Photo</label>
           <input
             type="file"
             style={{ width: "100% " }}
             id="strMealThumb"
             {...register("strMealThumb")}
+            required
           />
 
           <label htmlFor="strYoutube">You Tube</label>
