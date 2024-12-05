@@ -8,8 +8,8 @@ import { useState } from "react";
 export const CreateNewRecipe = () => {
   const [recipeData, setRecipeData] = useState(null);
   console.log("CreateNewRecipe rendered");
-  const handleRecipeSubmit = (data) => {
-    setRecipeData(data);
+  const handleRecipeSubmit = (recipeData) => {
+    setRecipeData(recipeData);
   };
   const [successMessage, setSuccessMessage] = useState("");
 

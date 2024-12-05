@@ -44,69 +44,70 @@ function RecipeForm({ onSubmit }) {
       name: recipeName,
       ingredients: ingredients,
     };
-    onSubmit(recipeData);
+    onSubmit({ recipeData });
     setRecipeName("");
     setIngredients([{ name: "", measurement: "" }]);
-
-    return (
-      <div onSubmit={handleSubmit}>
-        {ingredients.map((ingredient, index) => (
-          <div className="form--container" key={index}>
-            <input
-              type="text"
-              value={ingredient.name}
-              onChange={(e) =>
-                handleIngredientChange(index, "name", e.target.value)
-              }
-              placeholder="Ingredient"
-            />
-
-            <select
-              id="strArea"
-              {...register("strArea")}
-              value={ingredient.measurement}
-              onChange={(e) =>
-                handleIngredientChange(index, "measurement", e.target.value)
-              }
-            >
-              <option value="" disabled>
-                Select measurement
-              </option>
-              {measurements.map((measurement) => (
-                <option key={measurement} value={measurement}>
-                  {measurement}
-                </option>
-              ))}
-            </select>
-            <input
-              type="text"
-              value={ingredient.measurement}
-              onChange={(e) =>
-                handleIngredientChange(index, "measurement", e.target.value)
-              }
-              placeholder="Or enter measurement"
-            ></input>
-
-            <button type="button" onClick={() => handleRemoveIngredient(index)}>
-              Remove
-            </button>
-          </div>
-        ))}
-        <button type="button" onClick={handleAddIngredient}>
-          Add Ingredient
-        </button>
-      </div>
-    );
   };
-  const measurements = [
-    "1 pound",
-    "1/4 cup",
-    "3 cloves",
-    "1 tin ",
-    "1 teaspoon",
-    "1/2 teaspoon",
-    "6 leaves",
-    "spinkling",
-  ];
+
+  return (
+    <div onSubmit={handleSubmit}>
+      {ingredients.map((ingredient, index) => (
+        <div className="form--container" key={index}>
+          <input
+            type="text"
+            value={ingredient.name}
+            onChange={(e) =>
+              handleIngredientChange(index, "name", e.target.value)
+            }
+            placeholder="Ingredient"
+          />
+
+          <select
+            id="strArea"
+            {...register("strArea")}
+            value={ingredient.measurement}
+            onChange={(e) =>
+              handleIngredientChange(index, "measurement", e.target.value)
+            }
+          >
+            <option value="" disabled>
+              Select measurement
+            </option>
+            {measurements.map((measurement) => (
+              <option key={measurement} value={measurement}>
+                {measurement}
+              </option>
+            ))}
+          </select>
+          <input
+            type="text"
+            value={ingredient.measurement}
+            onChange={(e) =>
+              handleIngredientChange(index, "measurement", e.target.value)
+            }
+            placeholder="Or enter measurement"
+          ></input>
+
+          <button type="button" onClick={() => handleRemoveIngredient(index)}>
+            Remove
+          </button>
+        </div>
+      ))}
+      <button type="button" onClick={handleAddIngredient}>
+        Add Ingredient
+      </button>
+    </div>
+  );
 }
+const measurements = [
+  "1 pound",
+  "1/4 cup",
+  "3 cloves",
+  "1 tin ",
+  "1 teaspoon",
+  "1/2 teaspoon",
+  "6 leaves",
+  "spinkling",
+];
+
 export default RecipeForm;
