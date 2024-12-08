@@ -4,6 +4,7 @@ import { useRecipesDispatch } from "../RecipesProvider";
 import "./styles.css";
 import RecipeForm from "../RecipeForm";
 import { useState } from "react";
+import { RECIPE_ACTIONS } from "../RecipesProvider";
 
 export const CreateNewRecipe = () => {
   const [recipeData, setRecipeData] = useState(null);
@@ -88,7 +89,7 @@ export const CreateNewRecipe = () => {
       strCreativeCommonsConfirmed: data.strCreativeCommonsConfirmed || null,
     };
 
-    dispatch({ type: "ADD_RECIPE", payload: recipeData });
+    dispatch({ type: RECIPE_ACTIONS.update, payload: recipeData });
     setSuccessMessage("Recipe saved successfullly!");
   };
   return (
