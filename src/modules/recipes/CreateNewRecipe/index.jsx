@@ -7,11 +7,6 @@ import { useState } from "react";
 import { RECIPE_ACTIONS } from "../RecipesProvider";
 
 export const CreateNewRecipe = () => {
-  const [recipeData, setRecipeData] = useState(null);
-  console.log("CreateNewRecipe rendered");
-  const handleRecipeSubmit = (recipeData) => {
-    setRecipeData(recipeData);
-  };
   const [successMessage, setSuccessMessage] = useState("");
 
   const dispatch = useRecipesDispatch();
@@ -89,140 +84,142 @@ export const CreateNewRecipe = () => {
       strCreativeCommonsConfirmed: data.strCreativeCommonsConfirmed || null,
     };
 
-    dispatch({ type: RECIPE_ACTIONS.update, payload: recipeData });
+    dispatch({ type: RECIPE_ACTIONS.update, payload: [recipeData] });
     setSuccessMessage("Recipe saved successfullly!");
   };
   return (
-    <ProtectedRoute>
-      <div className="form">
-        <form className="recipe-form" onSubmit={handleSubmit(onSubmit)}>
-          <h1>Add New Recipe</h1>
-          <label htmlFor="strMeal">Meal name</label>
-          <input
-            style={{ width: "100% " }}
-            id="strMeal"
-            {...register("strMeal", {
-              minLength: {
-                value: 3,
-                message: "Meal name should be at least 3 characters.",
-              },
-            })}
-            required
-          />
+    <div className="form">
+      <form className="recipe-form" onSubmit={handleSubmit(onSubmit)}>
+        <h1>Add New Recipe</h1>
+        <label htmlFor="strMeal">Meal name</label>
+        <input
+          style={{ width: "100% " }}
+          id="strMeal"
+          {...register("strMeal", {
+            minLength: {
+              value: 3,
+              message: "Meal name should be at least 3 characters.",
+            },
+          })}
+          required
+        />
 
-          <label htmlFor="strTags">Select Tags</label>
-          <select id="strTags" {...register("strTags")}>
-            {tag.map((tag) => (
-              <option key={tag} value={tag}>
-                {tag}
-              </option>
-            ))}
-            required
-          </select>
+        <label htmlFor="strTags">Select Tags</label>
+        <select id="strTags" {...register("strTags")}>
+          {tag.map((tag) => (
+            <option key={tag} value={tag}>
+              {tag}
+            </option>
+          ))}
+          required
+        </select>
 
-          <label htmlFor="strDrinkAlternate">Drink name</label>
-          <input
-            style={{ width: "100% " }}
-            id="strDrinkAlternate"
-            {...register("strDrinkAlternate", {
-              minLength: {
-                value: 3,
-                message: "Drink name should be at least 3 characters.",
-              },
-            })}
-          />
-          {errors.strMeal && <p>{errors.strMeal.message}</p>}
+        <label htmlFor="strDrinkAlternate">Drink name</label>
+        <input
+          style={{ width: "100% " }}
+          id="strDrinkAlternate"
+          {...register("strDrinkAlternate", {
+            minLength: {
+              value: 3,
+              message: "Drink name should be at least 3 characters.",
+            },
+          })}
+        />
+        {errors.strMeal && <p>{errors.strMeal.message}</p>}
 
-          <label htmlFor="strCategory">Select Category</label>
-          <select id="strCategory" {...register("strCategory")}>
-            {categories.map((category) => (
-              <option key={category} value={category}>
-                {category}
-              </option>
-            ))}
-            required
-          </select>
+        <label htmlFor="strCategory">Select Category</label>
+        <select id="strCategory" {...register("strCategory")}>
+          {categories.map((category) => (
+            <option key={category} value={category}>
+              {category}
+            </option>
+          ))}
+          required
+        </select>
 
-          <label htmlFor="strArea">Select Area</label>
-          <select id="strArea" {...register("strArea")}>
-            {areas.map((area) => (
-              <option key={area} value={area}>
-                {area}
-              </option>
-            ))}
-            required
-          </select>
+        <label htmlFor="strArea">Select Area</label>
+        <select id="strArea" {...register("strArea")}>
+          {areas.map((area) => (
+            <option key={area} value={area}>
+              {area}
+            </option>
+          ))}
+          required
+        </select>
 
-          <RecipeForm onSubmit={handleRecipeSubmit} />
+        <RecipeForm />
 
-          <label htmlFor="strInstructions">Cooking Instructions</label>
-          <textarea
-            className="instructions"
-            id="strInstructions"
-            {...register("strInstructions")}
-            required
-          />
-          <label htmlFor="strMealThumb">Meal Photo</label>
-          <input
-            type="file"
-            style={{ width: "100% " }}
-            id="strMealThumb"
-            {...register("strMealThumb")}
-            required
-          />
+        <label htmlFor="strInstructions">Cooking Instructions</label>
+        <textarea
+          className="instructions"
+          id="strInstructions"
+          {...register("strInstructions")}
+          required
+        />
+        <label htmlFor="strMealThumb">Meal Photo</label>
+        <input
+          type="file"
+          style={{ width: "100% " }}
+          id="strMealThumb"
+          {...register("strMealThumb")}
+          required
+        />
 
-          <label htmlFor="strYoutube">You Tube</label>
-          <input
-            type="text"
-            style={{ width: "100% " }}
-            id="strYoutube"
-            {...register("strYoutube", {
-              pattern: {
-                value: /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$/,
-                message: "Geçerli bir YouTube bağlantisi girin.",
-              },
-            })}
-          />
+        <label htmlFor="strYoutube">You Tube</label>
+        <input
+          type="text"
+          style={{ width: "100% " }}
+          id="strYoutube"
+          {...register("strYoutube", {
+            pattern: {
+              value: /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$/,
+              message: "Geçerli bir YouTube bağlantisi girin.",
+            },
+          })}
+        />
 
-          <label htmlFor="strSource">Source</label>
-          <input
-            type="text"
-            style={{ width: "100% " }}
-            id="strSource"
-            {...register("strSource", {
-              value: "#",
-            })}
-          />
+        <label htmlFor="strSource">Source</label>
+        <input
+          type="text"
+          style={{ width: "100% " }}
+          id="strSource"
+          {...register("strSource", {
+            value: "#",
+          })}
+        />
 
-          <label htmlFor="strImageSource">Image Source</label>
-          <input
-            type="text"
-            style={{ width: "100% " }}
-            id="strImageSource"
-            {...register("strSource", {
-              value: "#",
-            })}
-          />
+        <label htmlFor="strImageSource">Image Source</label>
+        <input
+          type="text"
+          style={{ width: "100% " }}
+          id="strImageSource"
+          {...register("strSource", {
+            value: "#",
+          })}
+        />
 
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <label
-              htmlFor="strCreativeCommonsConfirmed"
-              style={{ marginRight: "5px" }}
-            >
-              Has A Creative Common:
-              <input
-                type="checkbox"
-                style={{ width: "30px", marginLeft: "10px" }}
-                id="strCreativeCommonsConfirmed"
-                {...register("strCreativeCommonsConfirmed")}
-              />
-            </label>
-          </div>
-          <button type="submit">Save Recipe</button>
-          {successMessage && <p>{successMessage}</p>}
-        </form>
-      </div>
-    </ProtectedRoute>
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <label
+            htmlFor="strCreativeCommonsConfirmed"
+            style={{ marginRight: "5px" }}
+          >
+            Has A Creative Common:
+            <input
+              type="checkbox"
+              style={{ width: "30px", marginLeft: "10px" }}
+              id="strCreativeCommonsConfirmed"
+              {...register("strCreativeCommonsConfirmed")}
+            />
+          </label>
+        </div>
+        <button type="submit">Save Recipe</button>
+        {successMessage && (
+          <p style={{ color: "green", fontWeight: "bold", fontSize: "1.2em" }}>
+            {successMessage}
+          </p>
+        )}
+      </form>
+    </div>
   );
 };
 
