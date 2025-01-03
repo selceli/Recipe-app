@@ -114,6 +114,15 @@ export const CreateNewRecipe = () => {
           required
         </select>
 
+        <label htmlFor="customTags">Custom Tags</label>
+        <input
+          type="text"
+          id="customTags"
+          {...register("customTags")}
+          placeholder="Tags (virgül ile ayirin)"
+          required
+        />
+
         <label htmlFor="strDrinkAlternate">Drink name</label>
         <input
           style={{ width: "100% " }}
