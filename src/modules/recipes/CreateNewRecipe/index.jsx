@@ -28,6 +28,7 @@ export const CreateNewRecipe = () => {
 
   const onSubmit = (data) => {
     const recipeData = {
+      idMeal: Date.now().toString(),
       strMeal: data.strMeal,
       strDrinkAlternate: null,
       strCategory: data.strCategory,
