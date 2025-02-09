@@ -10,10 +10,6 @@ export async function fetchRecipesByIngredient(query) {
   return data.meals;
 };
 
-};
-
-
-
 export async function fetchRecipesById(query) {
   const response = await fetch(
     `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${query}`
@@ -24,10 +20,6 @@ export async function fetchRecipesById(query) {
   }
   const data = await response.json();
 
-  return data.meals;
-};
-
-=======
   return data.meals[0];
-};
+}
 
