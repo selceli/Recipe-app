@@ -1,12 +1,13 @@
-input{
+* {
+  box-sizing: border-box;
+}
+input {
   background-color: white;
-  padding:15px;
+  padding: 0 15px;
   margin-bottom: 10px;
   border: 1px solid grey;
   border-radius: 5px;
   border: 1px grey solid;
   gap: 10px;
   min-width: 100%;
-  
 }
- 
